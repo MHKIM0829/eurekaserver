@@ -1,7 +1,7 @@
 # **CF Eureka Server**
 
 
-![](./../eurekaserver/architecture.png)
+![](../eurekaserver/architecture.png)
 
 - ### locally test
 ```
