@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: ${EUREKA_SERVER_NAME:eureka-server}
+
+server:
+  port: ${PORT:8080}
+
+eureka:
+  instance:
+    hostname: ${EUREKA_SERVER_NAME:eureka-server}.cfapps.jp10.hana.ondemand.com
+    prefer-ip-address: false
+    secure-port-enabled: true
+    secure-port: ${server.port}
+    lease-expiration-duration-in-seconds: 5
+    lease-renewal-interval-in-seconds: 5
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+            defaultZone: https://${EUREKA_SERVER_NAME:eureka-server}.cfapps.jp10.hana.ondemand.com:${server.port}/eureka/
+            # defaultZone: https://${eureka.instance.hostname}.cfapps.jp10.hana.ondemand.com/eureka/
+  server:
+    enable-self-preservation: false
+    max-threads-for-peer-replication: 0
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: ALWAYS
